@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Task Manager</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    
+    <div class="panel">
+      <h2 id="formTitle">Add Task</h2>
+      <form id="taskForm" autocomplete="off">
+        <div class="row">
+          <label for="title">Title <span class="muted">*</span></label>
+          <input id="title" name="title" type="text" placeholder="Task title (required)" />
+        </div>
+
+        <div class="row">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Optional details about the task"></textarea>
+        </div>
+
+        <div class="row">
+          <label for="dueDate">Due date <span class="muted">*</span></label>
+          <input id="dueDate" name="dueDate" type="date" />
+        </div>
+
+        <div class="row">
+          <label for="priority">Priority</label>
+          <select id="priority" name="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn" id="submitBtn">Add Task</button>
+          <button type="button" class="btn ghost" id="cancelEdit" style="display:none">Cancel</button>
+          <button type="button" class="small" id="clearAll">Clear All</button>
+        </div>
+
+        <div class="hint">Fields marked with <span class="muted">*</span> are required.</div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <h2 style="margin:0">Tasks</h2>
+          <div class="muted" id="taskCount">0 tasks</div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div class="filters" role="tablist" aria-label="Priority filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="low">Low</button>
+            <button class="filter-btn" data-filter="medium">Medium</button>
+            <button class="filter-btn" data-filter="high">High</button>
+          </div>
+
+          <div class="search">
+            <input id="search" placeholder="Search by title or description" />
+            <button id="searchClear" class="small" title="Clear search">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="list" class="list" aria-live="polite"></div>
+
+      <div class="footer">
+        <div id="remaining" class="muted">0 remaining</div>
+        <div class="muted" id="lastSaved">Last saved: —</div>
+      </div>
+    </div>
+  </div>
+
+<script src="./script.js"></script>
+</body>
+</html>
